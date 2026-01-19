@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ベテラン探検隊以上限定ページ - 化石探検隊ホームページ</title>
+    <title>シュート対人解説 - ベテラン探検隊以上限定</title>
     <link rel="stylesheet" href="../styles.css">
     <style>
         .limited-page-header {
@@ -14,28 +14,6 @@
         }
         .limited-page-content {
             padding: 3rem 0;
-        }
-        .limited-page-nav {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 2rem;
-        }
-        .limited-page-nav a {
-            padding: 0.75rem 1.5rem;
-            background: var(--bg-light);
-            border: 2px solid var(--border-color);
-            border-radius: 8px;
-            text-decoration: none;
-            color: var(--text-primary);
-            font-weight: 600;
-            transition: all 0.3s;
-        }
-        .limited-page-nav a:hover {
-            background: var(--primary-color);
-            color: white;
-            border-color: var(--primary-color);
         }
         .back-to-main {
             text-align: center;
@@ -51,11 +29,58 @@
             color: var(--text-primary);
             font-weight: 600;
             transition: all 0.3s;
+            margin: 0 0.5rem;
         }
         .back-to-main a:hover {
             background: var(--primary-color);
             color: white;
             border-color: var(--primary-color);
+        }
+        .pdf-container {
+            background: var(--bg-white);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow);
+            border: 2px solid var(--border-color);
+        }
+        .pdf-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+        .pdf-description {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        .pdf-item-link {
+            display: inline-block;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: white;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            border: none;
+            border-radius: 12px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            min-height: 48px;
+        }
+        .pdf-item-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(99, 102, 241, 0.3);
+        }
+        @media (max-width: 768px) {
+            .pdf-container {
+                padding: 1.5rem;
+            }
+            .pdf-title {
+                font-size: 1.3rem;
+            }
         }
     </style>
 </head>
@@ -88,36 +113,28 @@
             </div>
             <nav class="nav">
                 <a href="../index.html" class="nav-link">ホーム</a>
+                <a href="index.html" class="nav-link">ベテラン探検隊限定ページ</a>
             </nav>
         </div>
     </header>
 
     <div class="limited-page-header">
         <div class="container">
-            <h2 class="section-title" style="color: white; margin: 0;">🟨 ベテラン探検隊以上限定ページ</h2>
+            <h2 class="section-title" style="color: white; margin: 0;">🟨 シュート対人解説</h2>
             <p style="margin-top: 1rem; font-size: 1.1rem;">ベテラン探検隊以上のメンバー限定コンテンツ</p>
         </div>
     </div>
 
     <main class="limited-page-content">
         <div class="container">
-            <h2 class="section-title">限定コンテンツ</h2>
-            <p class="section-subtitle">ベテラン探検隊以上のメンバー限定のコンテンツをご覧いただけます</p>
-            
-            <div class="limited-page-nav">
-                <a href="page1.html">対人特化Discordサーバー情報</a>
-                <a href="page2.html">限定ライブ配信情報</a>
-                <a href="page3.html">対人攻略AI情報</a>
-                <a href="page4.html">パス・パスカット対人解説</a>
-                <a href="page5.html">セカンドボール対人解説</a>
-                <a href="page6.html">シュートブロック対人解説</a>
-                <a href="page7.html">シュート対人解説</a>
-                <a href="page8.html">編成相性表</a>
-                <a href="page9.html">リプレイの見方</a>
-                <a href="page10.html">ジャイキリで意識する場所</a>
+            <div class="pdf-container">
+                <h3 class="pdf-title">シュート対人解説</h3>
+                <p class="pdf-description">シュートの対人戦における基本的な考え方や戦術を解説したスライドです。</p>
+                <a href="../シュート対人解説.pdf" target="_blank" rel="noopener noreferrer" class="pdf-item-link">PDFを見る</a>
             </div>
 
             <div class="back-to-main">
+                <a href="index.html">ベテラン探検隊限定ページに戻る</a>
                 <a href="../index.html">メインページに戻る</a>
             </div>
         </div>
@@ -140,17 +157,6 @@
             if (mainContent) {
                 mainContent.style.display = 'block';
             }
-            
-            // 以下は一時的にコメントアウト
-            /*
-            if (requireAuth('veteran')) {
-                // 認証済みの場合はページを表示
-                const mainContent = document.querySelector('main');
-                if (mainContent) {
-                    mainContent.style.display = 'block';
-                }
-            }
-            */
         });
     </script>
 </body>
