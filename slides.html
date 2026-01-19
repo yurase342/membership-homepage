@@ -206,7 +206,7 @@
                 pdfs: [
                     {
                         name: '対人基礎総まとめ',
-                        url: '対人基礎総まとめ.pdf'
+                        url: './対人基礎総まとめ.pdf'
                     }
                 ]
             },
@@ -216,27 +216,27 @@
                 pdfs: [
                     {
                         name: 'キック解説スライド',
-                        url: 'キック解説スライド.pdf'
+                        url: './キック解説スライド.pdf'
                     },
                     {
                         name: 'スタミナ解説スライド',
-                        url: 'スタミナ解説スライド.pdf'
+                        url: './スタミナ解説スライド.pdf'
                     },
                     {
                         name: 'スピード解説スライド',
-                        url: 'スピード解説スライド.pdf'
+                        url: './スピード解説スライド.pdf'
                     },
                     {
                         name: 'テクニック解説スライド',
-                        url: 'テクニック解説スライド.pdf'
+                        url: './テクニック解説スライド.pdf'
                     },
                     {
                         name: 'フィジカル解説スライド',
-                        url: 'フィジカル解説スライド.pdf'
+                        url: './フィジカル解説スライド.pdf'
                     },
                     {
                         name: '賢さ解説スライド',
-                        url: '賢さ解説スライド.pdf'
+                        url: './賢さ解説スライド.pdf'
                     }
                 ]
             }
@@ -253,19 +253,25 @@
                 config = pdfConfig.stats;
             } else {
                 // デフォルト（両方表示）
-                const basicPDFs = pdfConfig.basic.pdfs.map(pdf => `
+                const basicPDFs = pdfConfig.basic.pdfs.map(pdf => {
+                    const encodedUrl = encodeURI(pdf.url);
+                    return `
                     <div class="pdf-item">
                         <div class="pdf-item-name">${pdf.name}</div>
-                        <a href="${pdf.url}" target="_blank" class="pdf-item-link">PDFを見る</a>
+                        <a href="${encodedUrl}" target="_blank" class="pdf-item-link" download>PDFを見る</a>
                     </div>
-                `).join('');
+                `;
+                }).join('');
 
-                const statsPDFs = pdfConfig.stats.pdfs.map(pdf => `
+                const statsPDFs = pdfConfig.stats.pdfs.map(pdf => {
+                    const encodedUrl = encodeURI(pdf.url);
+                    return `
                     <div class="pdf-item">
                         <div class="pdf-item-name">${pdf.name}</div>
-                        <a href="${pdf.url}" target="_blank" class="pdf-item-link">PDFを見る</a>
+                        <a href="${encodedUrl}" target="_blank" class="pdf-item-link" download>PDFを見る</a>
                     </div>
-                `).join('');
+                `;
+                }).join('');
 
                 pdfContent.innerHTML = `
                     <h2 class="section-title">解説スライド一覧</h2>
@@ -290,12 +296,15 @@
             }
 
             // 個別のPDFリストを表示
-            const pdfsHTML = config.pdfs.map(pdf => `
+            const pdfsHTML = config.pdfs.map(pdf => {
+                const encodedUrl = encodeURI(pdf.url);
+                return `
                 <div class="pdf-item">
                     <div class="pdf-item-name">${pdf.name}</div>
-                    <a href="${pdf.url}" target="_blank" class="pdf-item-link">PDFを見る</a>
+                    <a href="${encodedUrl}" target="_blank" class="pdf-item-link" download>PDFを見る</a>
                 </div>
-            `).join('');
+            `;
+            }).join('');
 
             pdfContent.innerHTML = `
                 <h3 class="pdf-title">${config.title}</h3>
