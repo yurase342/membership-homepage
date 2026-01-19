@@ -259,8 +259,8 @@
             } else {
                 // デフォルト（両方表示）
                 const basicPDFs = pdfConfig.basic.pdfs.map(pdf => {
-                    // ファイル名をエンコードしてURLを作成
-                    const encodedFilename = encodeURIComponent(pdf.filename.normalize('NFD'));
+                    // ファイル名をエンコードしてURLを作成（normalizeなしで元のファイル名を使用）
+                    const encodedFilename = encodeURIComponent(pdf.filename);
                     const pdfUrl = './' + encodedFilename;
                     return `
                     <div class="pdf-item">
@@ -271,8 +271,8 @@
                 }).join('');
 
                 const statsPDFs = pdfConfig.stats.pdfs.map(pdf => {
-                    // ファイル名をエンコードしてURLを作成
-                    const encodedFilename = encodeURIComponent(pdf.filename.normalize('NFD'));
+                    // ファイル名をエンコードしてURLを作成（normalizeなしで元のファイル名を使用）
+                    const encodedFilename = encodeURIComponent(pdf.filename);
                     const pdfUrl = './' + encodedFilename;
                     return `
                     <div class="pdf-item">
@@ -306,8 +306,8 @@
 
             // 個別のPDFリストを表示
             const pdfsHTML = config.pdfs.map(pdf => {
-                // ファイル名をエンコードしてURLを作成
-                const encodedFilename = encodeURIComponent(pdf.filename.normalize('NFD'));
+                // ファイル名をエンコードしてURLを作成（normalizeなしで元のファイル名を使用）
+                const encodedFilename = encodeURIComponent(pdf.filename);
                 const pdfUrl = './' + encodedFilename;
                 return `
                 <div class="pdf-item">
