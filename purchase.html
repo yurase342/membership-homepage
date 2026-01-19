@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>プラン変更 - メンバーシップ</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .purchase-container {
+            max-width: 800px;
+            margin: 4rem auto;
+            padding: 0 20px;
+        }
+
+        .purchase-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .purchase-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .selected-plan-card {
+            background: var(--bg-white);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: var(--shadow-lg);
+            margin-bottom: 2rem;
+            border: 3px solid var(--primary-color);
+        }
+
+        .selected-plan-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .selected-plan-price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .form-section {
+            background: var(--bg-white);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+        }
+
+        .form-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .payment-summary {
+            background: var(--bg-light);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        .summary-row.total {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            padding-top: 0.75rem;
+            border-top: 2px solid var(--border-color);
+            margin-top: 0.75rem;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+
+        .back-link:hover {
+            opacity: 0.8;
+        }
+
+        .error-message {
+            color: #ef4444;
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+            display: none;
+        }
+
+        .form-input.error {
+            border-color: #ef4444;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">化石探検隊ホームページ</h1>
+            <nav class="nav">
+                <a href="index.html" class="nav-link">ホーム</a>
+                <a href="index.html#plans" class="nav-link">プラン一覧</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="purchase-container">
+            <a href="index.html" class="back-link">← ホームに戻る</a>
+            
+            <div class="purchase-header">
+                <h2 class="purchase-title">メンバーシッププランを変更</h2>
+                <p class="section-subtitle">お支払い情報を入力してください</p>
+            </div>
+
+            <div id="selectedPlanCard" class="selected-plan-card">
+                <!-- 選択されたプラン情報がここに表示されます -->
+            </div>
+
+            <form id="purchaseForm" class="form-section">
+                <h3 class="form-title">お支払い情報</h3>
+                
+                <div class="form-group">
+                    <label class="form-label" for="cardNumber">カード番号</label>
+                    <input type="text" id="cardNumber" class="form-input" placeholder="1234 5678 9012 3456" maxlength="19">
+                    <div class="error-message" id="cardNumberError">カード番号を正しく入力してください</div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                    <div class="form-group">
+                        <label class="form-label" for="expiryDate">有効期限</label>
+                        <input type="text" id="expiryDate" class="form-input" placeholder="MM/YY" maxlength="5">
+                        <div class="error-message" id="expiryDateError">有効期限を正しく入力してください</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="cvv">CVV</label>
+                        <input type="text" id="cvv" class="form-input" placeholder="123" maxlength="4">
+                        <div class="error-message" id="cvvError">CVVを正しく入力してください</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="cardName">カード名義人</label>
+                    <input type="text" id="cardName" class="form-input" placeholder="TARO YAMADA">
+                    <div class="error-message" id="cardNameError">カード名義人を入力してください</div>
+                </div>
+
+                <div class="payment-summary">
+                    <div class="summary-row">
+                        <span>プラン料金（月額）</span>
+                        <span id="planPrice">¥0</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>初回登録料</span>
+                        <span>¥0</span>
+                    </div>
+                    <div class="summary-row total">
+                        <span>合計（月額）</span>
+                        <span id="totalPrice">¥0</span>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn">プランを変更する</button>
+            </form>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 メンバーシップ. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="purchase.js"></script>
+</body>
+</html>

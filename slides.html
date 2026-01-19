@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>解説スライド - 化石探検隊ホームページ</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .slides-page-header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        .slides-page-content {
+            padding: 3rem 0;
+        }
+        .pdf-container {
+            background: var(--bg-white);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow);
+            border: 2px solid var(--border-color);
+        }
+        .pdf-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+        .pdf-description {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        .pdf-link {
+            display: inline-block;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: white;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            border: none;
+            border-radius: 12px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .pdf-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(99, 102, 241, 0.3);
+        }
+        .pdf-list {
+            display: grid;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        .pdf-item {
+            padding: 1rem;
+            background: var(--bg-light);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+        .pdf-item-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+        .pdf-item-link {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            color: white;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            border: none;
+            border-radius: 8px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            min-height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .pdf-item-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(99, 102, 241, 0.3);
+        }
+        .pdf-link {
+            min-height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        @media (max-width: 768px) {
+            .pdf-container {
+                padding: 1.5rem;
+            }
+            .pdf-title {
+                font-size: 1.25rem;
+            }
+            .pdf-description {
+                font-size: 0.95rem;
+            }
+            .pdf-item {
+                padding: 1rem;
+            }
+            .pdf-item-name {
+                font-size: 1rem;
+                margin-bottom: 0.75rem;
+            }
+            .pdf-item-link {
+                width: 100%;
+                padding: 1rem;
+                font-size: 1rem;
+            }
+            .pdf-link {
+                width: 100%;
+                padding: 1rem;
+                font-size: 1rem;
+            }
+            .back-to-main a {
+                width: 100%;
+                padding: 1rem;
+                font-size: 1rem;
+                min-height: 48px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+        .back-to-main {
+            text-align: center;
+            margin-top: 2rem;
+        }
+        .back-to-main a {
+            display: inline-block;
+            padding: 0.75rem 2rem;
+            background: var(--bg-light);
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .back-to-main a:hover {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo-container">
+                <h1 class="logo">化石探検隊ホームページ</h1>
+                <p class="logo-subtitle">才能の化石メンバーシップ</p>
+            </div>
+            <nav class="nav">
+                <a href="index.html" class="nav-link">ホーム</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="slides-page-header">
+        <div class="container">
+            <h2 class="section-title" style="color: white; margin: 0;">解説スライド</h2>
+            <p style="margin-top: 1rem; font-size: 1.1rem;">対人の基礎や各ステータスの解説スライド</p>
+        </div>
+    </div>
+
+    <main class="slides-page-content">
+        <div class="container">
+            <div id="pdfContent" class="pdf-container">
+                <!-- PDFの内容はJavaScriptで動的に生成 -->
+            </div>
+
+            <div class="back-to-main">
+                <a href="index.html">メインページに戻る</a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 メンバーシップ. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // URLパラメータからタイプを取得
+        const urlParams = new URLSearchParams(window.location.search);
+        const slideType = urlParams.get('type');
+
+        // PDFの設定
+        const pdfConfig = {
+            basic: {
+                title: '対人の基礎',
+                description: '対人戦の基本的な考え方や戦術を解説したスライドです。',
+                pdfs: [
+                    {
+                        name: '対人基礎総まとめ',
+                        url: '対人基礎総まとめ.pdf'
+                    }
+                ]
+            },
+            stats: {
+                title: '各ステータスの解説スライド',
+                description: '各ステータスごとの詳細な解説スライドです。',
+                pdfs: [
+                    {
+                        name: 'キック解説スライド',
+                        url: 'キック解説スライド.pdf'
+                    },
+                    {
+                        name: 'スタミナ解説スライド',
+                        url: 'スタミナ解説スライド.pdf'
+                    },
+                    {
+                        name: 'スピード解説スライド',
+                        url: 'スピード解説スライド.pdf'
+                    },
+                    {
+                        name: 'テクニック解説スライド',
+                        url: 'テクニック解説スライド.pdf'
+                    },
+                    {
+                        name: 'フィジカル解説スライド',
+                        url: 'フィジカル解説スライド.pdf'
+                    },
+                    {
+                        name: '賢さ解説スライド',
+                        url: '賢さ解説スライド.pdf'
+                    }
+                ]
+            }
+        };
+
+        // PDFコンテンツを表示
+        function renderPDF() {
+            const pdfContent = document.getElementById('pdfContent');
+            let config;
+
+            if (slideType === 'basic') {
+                config = pdfConfig.basic;
+            } else if (slideType === 'stats') {
+                config = pdfConfig.stats;
+            } else {
+                // デフォルト（両方表示）
+                const basicPDFs = pdfConfig.basic.pdfs.map(pdf => `
+                    <div class="pdf-item">
+                        <div class="pdf-item-name">${pdf.name}</div>
+                        <a href="${pdf.url}" target="_blank" class="pdf-item-link">PDFを見る</a>
+                    </div>
+                `).join('');
+
+                const statsPDFs = pdfConfig.stats.pdfs.map(pdf => `
+                    <div class="pdf-item">
+                        <div class="pdf-item-name">${pdf.name}</div>
+                        <a href="${pdf.url}" target="_blank" class="pdf-item-link">PDFを見る</a>
+                    </div>
+                `).join('');
+
+                pdfContent.innerHTML = `
+                    <h2 class="section-title">解説スライド一覧</h2>
+                    <div style="display: grid; gap: 2rem; margin-top: 2rem;">
+                        <div>
+                            <h3 class="pdf-title">${pdfConfig.basic.title}</h3>
+                            <p class="pdf-description">${pdfConfig.basic.description}</p>
+                            <div class="pdf-list">
+                                ${basicPDFs}
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="pdf-title">${pdfConfig.stats.title}</h3>
+                            <p class="pdf-description">${pdfConfig.stats.description}</p>
+                            <div class="pdf-list">
+                                ${statsPDFs}
+                            </div>
+                        </div>
+                    </div>
+                `;
+                return;
+            }
+
+            // 個別のPDFリストを表示
+            const pdfsHTML = config.pdfs.map(pdf => `
+                <div class="pdf-item">
+                    <div class="pdf-item-name">${pdf.name}</div>
+                    <a href="${pdf.url}" target="_blank" class="pdf-item-link">PDFを見る</a>
+                </div>
+            `).join('');
+
+            pdfContent.innerHTML = `
+                <h3 class="pdf-title">${config.title}</h3>
+                <p class="pdf-description">${config.description}</p>
+                <div class="pdf-list">
+                    ${pdfsHTML}
+                </div>
+            `;
+        }
+
+        // ページ読み込み時に実行
+        document.addEventListener('DOMContentLoaded', () => {
+            renderPDF();
+        });
+    </script>
+</body>
+</html>

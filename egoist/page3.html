@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>裏事情ホームページ - エゴイスト限定</title>
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        .limited-page-header {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        .limited-page-content {
+            padding: 3rem 0;
+        }
+        .back-to-main {
+            text-align: center;
+            margin-top: 2rem;
+        }
+        .back-to-main a {
+            display: inline-block;
+            padding: 0.75rem 2rem;
+            background: var(--bg-light);
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 600;
+            transition: all 0.3s;
+            margin: 0 0.5rem;
+        }
+        .back-to-main a:hover {
+            background: #ef4444;
+            color: white;
+            border-color: #ef4444;
+        }
+    </style>
+</head>
+<body>
+    <!-- パスワード認証モーダル -->
+    <div id="authModal" class="auth-modal" onclick="handleModalClick(event)">
+        <div class="auth-modal-content">
+            <h3 id="authModalTitle" class="auth-modal-title">限定ページ</h3>
+            <p class="auth-modal-subtitle">パスワードを入力してください</p>
+            <input 
+                type="password" 
+                id="authPassword" 
+                class="auth-password-input" 
+                placeholder="パスワード"
+                onkeypress="handleAuthKeyPress(event)"
+            >
+            <div id="authError" class="auth-error" style="display: none;"></div>
+            <div class="auth-modal-buttons">
+                <button onclick="submitAuth()" class="auth-submit-btn">認証</button>
+                <button onclick="closeAuthModal()" class="auth-cancel-btn">キャンセル</button>
+            </div>
+        </div>
+    </div>
+
+    <header class="header">
+        <div class="container">
+            <div class="logo-container">
+                <h1 class="logo">化石探検隊ホームページ</h1>
+                <span class="logo-subtitle">才能の化石メンバーシップ</span>
+            </div>
+            <nav class="nav">
+                <a href="../index.html" class="nav-link">ホーム</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="limited-page-header">
+        <div class="container">
+            <h2 class="section-title" style="color: white; margin: 0;">🟥 エゴイスト限定</h2>
+            <p style="margin-top: 1rem; font-size: 1.1rem;">エゴイスト限定の裏事情ホームページ</p>
+        </div>
+    </div>
+
+    <main class="limited-page-content">
+        <div class="container">
+            <h2 class="section-title">エゴイスト限定の裏事情ホームページ</h2>
+            <p class="section-subtitle">エゴイストプランのメンバー限定の裏事情情報</p>
+            
+            <div class="plan-feature-card" style="margin-top: 2rem;">
+                <h3 class="plan-feature-title">裏事情ホームページについて</h3>
+                <p class="plan-feature-description">エゴイストプランのメンバー限定で、特別な裏事情情報を公開しています。</p>
+            </div>
+
+            <div class="back-to-main">
+                <a href="index.html">エゴイスト限定トップに戻る</a>
+                <a href="../index.html">メインページに戻る</a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 メンバーシップ. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../js/config.js"></script>
+    <script src="../js/auth.js"></script>
+    <script>
+        // ページ読み込み時に認証チェック
+        // 一時的に無効化（中身のチェック用）
+        document.addEventListener('DOMContentLoaded', () => {
+            // 認証チェックをスキップしてページを表示
+            const mainContent = document.querySelector('main');
+            if (mainContent) {
+                mainContent.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>

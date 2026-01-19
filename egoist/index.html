@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>エゴイスト限定ページ - 化石探検隊ホームページ</title>
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        .limited-page-header {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        .limited-page-content {
+            padding: 3rem 0;
+        }
+        .limited-page-nav {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        .limited-page-nav a {
+            padding: 0.75rem 1.5rem;
+            background: var(--bg-light);
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .limited-page-nav a:hover {
+            background: #ef4444;
+            color: white;
+            border-color: #ef4444;
+        }
+        .back-to-main {
+            text-align: center;
+            margin-top: 2rem;
+        }
+        .back-to-main a {
+            display: inline-block;
+            padding: 0.75rem 2rem;
+            background: var(--bg-light);
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .back-to-main a:hover {
+            background: #ef4444;
+            color: white;
+            border-color: #ef4444;
+        }
+        .secret-info-box {
+            background: var(--bg-white);
+            border: 3px solid #ef4444;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .secret-info-box h3 {
+            color: #ef4444;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .secret-info-content {
+            color: var(--text-primary);
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-top: 1rem;
+        }
+        .secret-info-content p {
+            margin-bottom: 1rem;
+        }
+        .secret-info-content p:last-child {
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- パスワード認証モーダル -->
+    <div id="authModal" class="auth-modal" onclick="handleModalClick(event)">
+        <div class="auth-modal-content">
+            <h3 id="authModalTitle" class="auth-modal-title">限定ページ</h3>
+            <p class="auth-modal-subtitle">パスワードを入力してください</p>
+            <input 
+                type="password" 
+                id="authPassword" 
+                class="auth-password-input" 
+                placeholder="パスワード"
+                onkeypress="handleAuthKeyPress(event)"
+            >
+            <div id="authError" class="auth-error" style="display: none;"></div>
+            <div class="auth-modal-buttons">
+                <button onclick="submitAuth()" class="auth-submit-btn">認証</button>
+                <button onclick="closeAuthModal()" class="auth-cancel-btn">キャンセル</button>
+            </div>
+        </div>
+    </div>
+
+    <header class="header">
+        <div class="container">
+            <div class="logo-container">
+                <h1 class="logo">化石探検隊ホームページ</h1>
+                <span class="logo-subtitle">才能の化石メンバーシップ</span>
+            </div>
+            <nav class="nav">
+                <a href="../index.html" class="nav-link">ホーム</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="limited-page-header">
+        <div class="container">
+            <h2 class="section-title" style="color: white; margin: 0;">🟥 エゴイスト限定ページ</h2>
+            <p style="margin-top: 1rem; font-size: 1.1rem;">エゴイストプランのメンバー限定コンテンツ</p>
+        </div>
+    </div>
+
+    <main class="limited-page-content">
+        <div class="container">
+            <h2 class="section-title">限定コンテンツ</h2>
+            <p class="section-subtitle">エゴイストプランのメンバー限定のコンテンツをご覧いただけます</p>
+            
+            <div class="limited-page-nav">
+                <a href="page1.html">名前の記載について</a>
+                <a href="page2.html">対人攻略AI究極版</a>
+                <a href="page3.html">裏事情ホームページ</a>
+            </div>
+
+            <!-- 裏事情ボックス -->
+            <div class="secret-info-box">
+                <h3>🟥 裏事情</h3>
+                <div class="secret-info-content">
+                    <p>エゴイストプランのメンバー限定の特別な裏事情情報を公開しています。</p>
+                    <p>ここに裏事情の内容を記載してください。</p>
+                    <!-- 裏事情の内容をここに追加してください -->
+                </div>
+            </div>
+
+            <div class="back-to-main">
+                <a href="../index.html">メインページに戻る</a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 メンバーシップ. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../js/config.js"></script>
+    <script src="../js/auth.js"></script>
+    <script>
+        // ページ読み込み時に認証チェック
+        // 一時的に無効化（中身のチェック用）
+        document.addEventListener('DOMContentLoaded', () => {
+            // 認証チェックをスキップしてページを表示
+            const mainContent = document.querySelector('main');
+            if (mainContent) {
+                mainContent.style.display = 'block';
+            }
+            
+            // 以下は一時的にコメントアウト
+            /*
+            if (requireAuth('egoist')) {
+                // 認証済みの場合はページを表示
+                const mainContent = document.querySelector('main');
+                if (mainContent) {
+                    mainContent.style.display = 'block';
+                }
+            }
+            */
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="format-detection" content="telephone=no">
+    <title>メンバーシップ - ホームページ</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- パスワード認証モーダル -->
+    <div id="authModal" class="auth-modal" onclick="handleModalClick(event)">
+        <div class="auth-modal-content">
+            <h3 id="authModalTitle" class="auth-modal-title">限定ページ</h3>
+            <p class="auth-modal-subtitle">パスワードを入力してください</p>
+            <input 
+                type="password" 
+                id="authPassword" 
+                class="auth-password-input" 
+                placeholder="パスワード"
+                onkeypress="handleAuthKeyPress(event)"
+            >
+            <div id="authError" class="auth-error" style="display: none;"></div>
+            <div class="auth-modal-buttons">
+                <button onclick="submitAuth()" class="auth-submit-btn">認証</button>
+                <button onclick="closeAuthModal()" class="auth-cancel-btn">キャンセル</button>
+            </div>
+        </div>
+    </div>
+    <header class="header">
+        <div class="container">
+            <div class="logo-container">
+                <h1 class="logo">化石探検隊ホームページ</h1>
+                <p class="logo-subtitle">才能の化石メンバーシップ</p>
+            </div>
+            <nav class="nav">
+                <button class="nav-toggle" id="navToggle" aria-label="メニューを開く">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <div class="nav-menu" id="navMenu">
+                    <a href="#plans" class="nav-link">プラン一覧</a>
+                    <a href="#features" class="nav-link">各プランの特徴</a>
+                    <a href="#slides" class="nav-link">解説スライド</a>
+                    <a href="#limited" class="nav-link">限定ページ</a>
+                    <a href="#members" class="nav-link">選ばれた者たち</a>
+                    <a href="#contact" class="nav-link">お問い合わせ</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- ヒーローセクション -->
+        <section class="hero">
+            <div class="container">
+                <h2 class="hero-title">対人を極めて最強のエゴイストになれ</h2>
+                <p class="hero-subtitle">ガチャなどのお得情報も盛りだくさん</p>
+            </div>
+        </section>
+
+        <!-- プラン一覧セクション -->
+        <section id="plans" class="plans-section">
+            <div class="container">
+                <h2 class="section-title">プラン一覧</h2>
+                <div class="plans-grid" id="plansGrid">
+                    <!-- プランカードはJavaScriptで動的に生成 -->
+                </div>
+            </div>
+        </section>
+
+        <!-- 各プランの特徴セクション -->
+        <section id="features" class="plan-features-section">
+            <div class="container">
+                <h2 class="section-title">各プランの特徴</h2>
+                <div class="plan-features-grid" id="planFeaturesGrid">
+                    <!-- プランの特徴はJavaScriptで動的に生成 -->
+                </div>
+            </div>
+        </section>
+
+        <!-- 解説スライドセクション -->
+        <section id="slides" class="slides-section">
+            <div class="container">
+                <h2 class="section-title">解説スライド</h2>
+                <p class="section-subtitle">対人の基礎や各ステータスの解説スライドをPDF形式でご覧いただけます</p>
+                <div class="slides-grid">
+                    <div class="slide-card">
+                        <h3 class="slide-title">対人の基礎</h3>
+                        <p class="slide-description">対人戦の基本的な考え方や戦術を解説したスライドです</p>
+                        <a href="slides.html?type=basic" class="slide-btn">スライドを見る</a>
+                    </div>
+                    <div class="slide-card">
+                        <h3 class="slide-title">各ステータスの解説スライド</h3>
+                        <p class="slide-description">各ステータスごとの詳細な解説スライドです</p>
+                        <a href="slides.html?type=stats" class="slide-btn">スライドを見る</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 限定ページアクセスセクション -->
+        <section id="limited" class="limited-access-section">
+            <div class="container">
+                <h2 class="section-title">限定ページ</h2>
+                <div class="limited-access-grid">
+                    <div class="limited-access-card">
+                        <h3 class="limited-access-title">🟨 ベテラン探検隊以上限定</h3>
+                        <p class="limited-access-description">ベテラン探検隊以上のメンバー限定のコンテンツにアクセスできます</p>
+                        <!-- 一時的にパスワード認証を無効化（中身のチェック用） -->
+                        <a href="veteran/index.html" class="limited-access-btn limited-access-btn-yellow" style="text-decoration: none; display: inline-block;">
+                            ベテラン探検隊以上限定ページへ
+                        </a>
+                    </div>
+                    <div class="limited-access-card">
+                        <h3 class="limited-access-title">🟥 エゴイスト限定</h3>
+                        <p class="limited-access-description">エゴイストプランのメンバー限定のコンテンツにアクセスできます</p>
+                        <!-- 一時的にパスワード認証を無効化（中身のチェック用） -->
+                        <a href="egoist/index.html" class="limited-access-btn limited-access-btn-red" style="text-decoration: none; display: inline-block;">
+                            エゴイスト限定ページへ
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 選ばれた者たちセクション -->
+        <section id="members" class="members-section">
+            <div class="container">
+                <h2 class="section-title">選ばれた者たち</h2>
+                <p class="section-subtitle">🟥エゴイストプランのメンバー</p>
+                <div class="members-grid" id="membersGrid">
+                    <!-- メンバーリストはJavaScriptで動的に生成 -->
+                </div>
+            </div>
+        </section>
+
+        <!-- お問い合わせセクション -->
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <h2 class="section-title">お問い合わせ先</h2>
+                <p class="section-subtitle">ご不明な点があればお気軽にDMください</p>
+                <div class="contact-content">
+                    <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="x-link">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                        </svg>
+                        X（旧Twitter）
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 メンバーシップ. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/config.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
