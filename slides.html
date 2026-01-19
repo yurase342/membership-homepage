@@ -206,7 +206,7 @@
                 pdfs: [
                     {
                         name: '対人基礎総まとめ',
-                        url: './対人基礎総まとめ.pdf'
+                        filename: '対人基礎総まとめ.pdf'
                     }
                 ]
             },
@@ -216,27 +216,27 @@
                 pdfs: [
                     {
                         name: 'キック解説スライド',
-                        url: './キック解説スライド.pdf'
+                        filename: 'キック解説スライド.pdf'
                     },
                     {
                         name: 'スタミナ解説スライド',
-                        url: './スタミナ解説スライド.pdf'
+                        filename: 'スタミナ解説スライド.pdf'
                     },
                     {
                         name: 'スピード解説スライド',
-                        url: './スピード解説スライド.pdf'
+                        filename: 'スピード解説スライド.pdf'
                     },
                     {
                         name: 'テクニック解説スライド',
-                        url: './テクニック解説スライド.pdf'
+                        filename: 'テクニック解説スライド.pdf'
                     },
                     {
                         name: 'フィジカル解説スライド',
-                        url: './フィジカル解説スライド.pdf'
+                        filename: 'フィジカル解説スライド.pdf'
                     },
                     {
                         name: '賢さ解説スライド',
-                        url: './賢さ解説スライド.pdf'
+                        filename: '賢さ解説スライド.pdf'
                     }
                 ]
             }
@@ -259,23 +259,25 @@
             } else {
                 // デフォルト（両方表示）
                 const basicPDFs = pdfConfig.basic.pdfs.map(pdf => {
-                    // スマホでも確実に動作するようにパスを正しくエンコード（encodeURIを使用）
-                    const encodedUrl = encodeURI(pdf.url);
+                    // ファイル名をエンコードしてURLを作成
+                    const encodedFilename = encodeURIComponent(pdf.filename);
+                    const pdfUrl = './' + encodedFilename;
                     return `
                     <div class="pdf-item">
                         <div class="pdf-item-name">${pdf.name}</div>
-                        <a href="${encodedUrl}" target="_blank" rel="noopener noreferrer" class="pdf-item-link">PDFを見る</a>
+                        <a href="${pdfUrl}" target="_blank" rel="noopener noreferrer" class="pdf-item-link">PDFを見る</a>
                     </div>
                 `;
                 }).join('');
 
                 const statsPDFs = pdfConfig.stats.pdfs.map(pdf => {
-                    // スマホでも確実に動作するようにパスを正しくエンコード（encodeURIを使用）
-                    const encodedUrl = encodeURI(pdf.url);
+                    // ファイル名をエンコードしてURLを作成
+                    const encodedFilename = encodeURIComponent(pdf.filename);
+                    const pdfUrl = './' + encodedFilename;
                     return `
                     <div class="pdf-item">
                         <div class="pdf-item-name">${pdf.name}</div>
-                        <a href="${encodedUrl}" target="_blank" rel="noopener noreferrer" class="pdf-item-link">PDFを見る</a>
+                        <a href="${pdfUrl}" target="_blank" rel="noopener noreferrer" class="pdf-item-link">PDFを見る</a>
                     </div>
                 `;
                 }).join('');
@@ -304,12 +306,13 @@
 
             // 個別のPDFリストを表示
             const pdfsHTML = config.pdfs.map(pdf => {
-                // スマホでも確実に動作するようにパスを正しくエンコード（encodeURIを使用）
-                const encodedUrl = encodeURI(pdf.url);
+                // ファイル名をエンコードしてURLを作成
+                const encodedFilename = encodeURIComponent(pdf.filename);
+                const pdfUrl = './' + encodedFilename;
                 return `
                 <div class="pdf-item">
                     <div class="pdf-item-name">${pdf.name}</div>
-                    <a href="${encodedUrl}" target="_blank" rel="noopener noreferrer" class="pdf-item-link">PDFを見る</a>
+                    <a href="${pdfUrl}" target="_blank" rel="noopener noreferrer" class="pdf-item-link">PDFを見る</a>
                 </div>
             `;
             }).join('');
