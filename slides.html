@@ -245,6 +245,11 @@
         // PDFコンテンツを表示
         function renderPDF() {
             const pdfContent = document.getElementById('pdfContent');
+            if (!pdfContent) {
+                console.error('pdfContent element not found');
+                return;
+            }
+
             let config;
 
             if (slideType === 'basic') {
@@ -254,21 +259,23 @@
             } else {
                 // デフォルト（両方表示）
                 const basicPDFs = pdfConfig.basic.pdfs.map(pdf => {
-                    const encodedUrl = encodeURI(pdf.url);
+                    // スマホでも確実に動作するようにパスを正しくエンコード
+                    const encodedUrl = encodeURIComponent(pdf.url.replace('./', ''));
                     return `
                     <div class="pdf-item">
                         <div class="pdf-item-name">${pdf.name}</div>
-                        <a href="${encodedUrl}" target="_blank" class="pdf-item-link">PDFを見る</a>
+                        <a href="./${encodedUrl}" target="_blank" rel="noopener noreferrer" class="pdf-item-link">PDFを見る</a>
                     </div>
                 `;
                 }).join('');
 
                 const statsPDFs = pdfConfig.stats.pdfs.map(pdf => {
-                    const encodedUrl = encodeURI(pdf.url);
+                    // スマホでも確実に動作するようにパスを正しくエンコード
+                    const encodedUrl = encodeURIComponent(pdf.url.replace('./', ''));
                     return `
                     <div class="pdf-item">
                         <div class="pdf-item-name">${pdf.name}</div>
-                        <a href="${encodedUrl}" target="_blank" class="pdf-item-link">PDFを見る</a>
+                        <a href="./${encodedUrl}" target="_blank" rel="noopener noreferrer" class="pdf-item-link">PDFを見る</a>
                     </div>
                 `;
                 }).join('');
@@ -297,11 +304,12 @@
 
             // 個別のPDFリストを表示
             const pdfsHTML = config.pdfs.map(pdf => {
-                const encodedUrl = encodeURI(pdf.url);
+                // スマホでも確実に動作するようにパスを正しくエンコード
+                const encodedUrl = encodeURIComponent(pdf.url.replace('./', ''));
                 return `
                 <div class="pdf-item">
                     <div class="pdf-item-name">${pdf.name}</div>
-                    <a href="${encodedUrl}" target="_blank" class="pdf-item-link">PDFを見る</a>
+                    <a href="./${encodedUrl}" target="_blank" rel="noopener noreferrer" class="pdf-item-link">PDFを見る</a>
                 </div>
             `;
             }).join('');
