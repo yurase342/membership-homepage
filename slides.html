@@ -259,23 +259,23 @@
             } else {
                 // デフォルト（両方表示）
                 const basicPDFs = pdfConfig.basic.pdfs.map(pdf => {
-                    // スマホでも確実に動作するようにパスを正しくエンコード
-                    const encodedUrl = encodeURIComponent(pdf.url.replace('./', ''));
+                    // スマホでも確実に動作するようにパスを正しくエンコード（encodeURIを使用）
+                    const encodedUrl = encodeURI(pdf.url);
                     return `
                     <div class="pdf-item">
                         <div class="pdf-item-name">${pdf.name}</div>
-                        <a href="./${encodedUrl}" target="_blank" rel="noopener noreferrer" class="pdf-item-link">PDFを見る</a>
+                        <a href="${encodedUrl}" target="_blank" rel="noopener noreferrer" class="pdf-item-link">PDFを見る</a>
                     </div>
                 `;
                 }).join('');
 
                 const statsPDFs = pdfConfig.stats.pdfs.map(pdf => {
-                    // スマホでも確実に動作するようにパスを正しくエンコード
-                    const encodedUrl = encodeURIComponent(pdf.url.replace('./', ''));
+                    // スマホでも確実に動作するようにパスを正しくエンコード（encodeURIを使用）
+                    const encodedUrl = encodeURI(pdf.url);
                     return `
                     <div class="pdf-item">
                         <div class="pdf-item-name">${pdf.name}</div>
-                        <a href="./${encodedUrl}" target="_blank" rel="noopener noreferrer" class="pdf-item-link">PDFを見る</a>
+                        <a href="${encodedUrl}" target="_blank" rel="noopener noreferrer" class="pdf-item-link">PDFを見る</a>
                     </div>
                 `;
                 }).join('');
@@ -304,12 +304,12 @@
 
             // 個別のPDFリストを表示
             const pdfsHTML = config.pdfs.map(pdf => {
-                // スマホでも確実に動作するようにパスを正しくエンコード
-                const encodedUrl = encodeURIComponent(pdf.url.replace('./', ''));
+                // スマホでも確実に動作するようにパスを正しくエンコード（encodeURIを使用）
+                const encodedUrl = encodeURI(pdf.url);
                 return `
                 <div class="pdf-item">
                     <div class="pdf-item-name">${pdf.name}</div>
-                    <a href="./${encodedUrl}" target="_blank" rel="noopener noreferrer" class="pdf-item-link">PDFを見る</a>
+                    <a href="${encodedUrl}" target="_blank" rel="noopener noreferrer" class="pdf-item-link">PDFを見る</a>
                 </div>
             `;
             }).join('');
