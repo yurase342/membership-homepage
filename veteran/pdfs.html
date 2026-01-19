@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>解説用PDF - ベテラン探検隊以上限定</title>
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        .limited-page-header {
+            background: linear-gradient(135deg, #eab308 0%, #ca8a04 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        .limited-page-content {
+            padding: 3rem 0;
+        }
+        .back-to-main {
+            text-align: center;
+            margin-top: 2rem;
+        }
+        .back-to-main a {
+            display: inline-block;
+            padding: 0.75rem 2rem;
+            background: var(--bg-light);
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 600;
+            transition: all 0.3s;
+            margin: 0 0.5rem;
+        }
+        .back-to-main a:hover {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+        .pdf-container {
+            background: var(--bg-white);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow);
+            border: 2px solid var(--border-color);
+        }
+        .pdf-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+        .pdf-description {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        .pdf-list {
+            display: grid;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        .pdf-item {
+            padding: 1rem;
+            background: var(--bg-light);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+        .pdf-item-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+        .pdf-item-link {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            color: white;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            border: none;
+            border-radius: 8px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            min-height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .pdf-item-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(99, 102, 241, 0.3);
+        }
+        @media (max-width: 768px) {
+            .pdf-container {
+                padding: 1.5rem;
+            }
+            .pdf-title {
+                font-size: 1.3rem;
+            }
+            .pdf-list {
+                gap: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- パスワード認証モーダル -->
+    <div id="authModal" class="auth-modal" onclick="handleModalClick(event)">
+        <div class="auth-modal-content">
+            <h3 id="authModalTitle" class="auth-modal-title">限定ページ</h3>
+            <p class="auth-modal-subtitle">パスワードを入力してください</p>
+            <input 
+                type="password" 
+                id="authPassword" 
+                class="auth-password-input" 
+                placeholder="パスワード"
+                onkeypress="handleAuthKeyPress(event)"
+            >
+            <div id="authError" class="auth-error" style="display: none;"></div>
+            <div class="auth-modal-buttons">
+                <button onclick="submitAuth()" class="auth-submit-btn">認証</button>
+                <button onclick="closeAuthModal()" class="auth-cancel-btn">キャンセル</button>
+            </div>
+        </div>
+    </div>
+
+    <header class="header">
+        <div class="container">
+            <div class="logo-container">
+                <h1 class="logo">化石探検隊ホームページ</h1>
+                <span class="logo-subtitle">才能の化石メンバーシップ</span>
+            </div>
+            <nav class="nav">
+                <a href="../index.html" class="nav-link">ホーム</a>
+                <a href="index.html" class="nav-link">ベテラン探検隊限定ページ</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="limited-page-header">
+        <div class="container">
+            <h2 class="section-title" style="color: white; margin: 0;">🟨 解説用PDF</h2>
+            <p style="margin-top: 1rem; font-size: 1.1rem;">ベテラン探検隊以上のメンバー限定コンテンツ</p>
+        </div>
+    </div>
+
+    <main class="limited-page-content">
+        <div class="container">
+            <div class="pdf-container">
+                <h3 class="pdf-title">解説用PDF一覧</h3>
+                <p class="pdf-description">対人戦に関する解説PDFをご覧いただけます。</p>
+                <div class="pdf-list">
+                    <div class="pdf-item">
+                        <div class="pdf-item-name">パス・パスカット対人解説</div>
+                        <a href="../パス・パスカット対人解説.pdf" target="_blank" rel="noopener noreferrer" class="pdf-item-link">PDFを見る</a>
+                    </div>
+                    <div class="pdf-item">
+                        <div class="pdf-item-name">セカンドボール対人解説</div>
+                        <a href="../セカンドボール対人解説.pdf" target="_blank" rel="noopener noreferrer" class="pdf-item-link">PDFを見る</a>
+                    </div>
+                    <div class="pdf-item">
+                        <div class="pdf-item-name">シュートブロック対人解説</div>
+                        <a href="../シュートブロック対人解説.pdf" target="_blank" rel="noopener noreferrer" class="pdf-item-link">PDFを見る</a>
+                    </div>
+                    <div class="pdf-item">
+                        <div class="pdf-item-name">シュート対人解説</div>
+                        <a href="../シュート対人解説.pdf" target="_blank" rel="noopener noreferrer" class="pdf-item-link">PDFを見る</a>
+                    </div>
+                    <div class="pdf-item">
+                        <div class="pdf-item-name">編成相性表</div>
+                        <a href="../編成相性表.pdf" target="_blank" rel="noopener noreferrer" class="pdf-item-link">PDFを見る</a>
+                    </div>
+                    <div class="pdf-item">
+                        <div class="pdf-item-name">リプレイの見方</div>
+                        <a href="../リプレイの見方.pdf" target="_blank" rel="noopener noreferrer" class="pdf-item-link">PDFを見る</a>
+                    </div>
+                    <div class="pdf-item">
+                        <div class="pdf-item-name">ジャイキリで意識する場所</div>
+                        <a href="../ジャイキリで意識する場所.pdf" target="_blank" rel="noopener noreferrer" class="pdf-item-link">PDFを見る</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="back-to-main">
+                <a href="index.html">ベテラン探検隊限定ページに戻る</a>
+                <a href="../index.html">メインページに戻る</a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 メンバーシップ. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../js/config.js"></script>
+    <script src="../js/auth.js"></script>
+    <script>
+        // ページ読み込み時に認証チェック
+        // 一時的に無効化（中身のチェック用）
+        document.addEventListener('DOMContentLoaded', () => {
+            // 認証チェックをスキップしてページを表示
+            const mainContent = document.querySelector('main');
+            if (mainContent) {
+                mainContent.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
