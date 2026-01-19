@@ -265,7 +265,7 @@
                     return `
                     <div class="pdf-item">
                         <div class="pdf-item-name">${pdf.name}</div>
-                        <a href="${pdfUrl}" target="_blank" rel="noopener noreferrer" class="pdf-item-link">PDFを見る</a>
+                        <a href="${pdfUrl}" download="${pdf.filename}" target="_blank" rel="noopener noreferrer" class="pdf-item-link">PDFをダウンロード</a>
                     </div>
                 `;
                 }).join('');
@@ -277,7 +277,7 @@
                     return `
                     <div class="pdf-item">
                         <div class="pdf-item-name">${pdf.name}</div>
-                        <a href="${pdfUrl}" target="_blank" rel="noopener noreferrer" class="pdf-item-link">PDFを見る</a>
+                        <a href="${pdfUrl}" download="${pdf.filename}" target="_blank" rel="noopener noreferrer" class="pdf-item-link">PDFをダウンロード</a>
                     </div>
                 `;
                 }).join('');
@@ -312,7 +312,7 @@
                 return `
                 <div class="pdf-item">
                     <div class="pdf-item-name">${pdf.name}</div>
-                    <a href="${pdfUrl}" target="_blank" rel="noopener noreferrer" class="pdf-item-link">PDFを見る</a>
+                    <a href="${pdfUrl}" download="${pdf.filename}" target="_blank" rel="noopener noreferrer" class="pdf-item-link">PDFをダウンロード</a>
                 </div>
             `;
             }).join('');
